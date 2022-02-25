@@ -47,6 +47,10 @@ func TestLanguage(t *testing.T) {
 			name: "in French",
 			args: args{name: "Elodie", language: "French"},
 			want: "Bonjour, Elodie",
+		}, {
+			name: "in German",
+			args: args{name: "Elodie", language: "German"},
+			want: "Hallo, Elodie",
 		},
 	}
 	for _, tt := range tests {
