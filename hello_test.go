@@ -16,6 +16,7 @@ func TestHello(t *testing.T) {
 		want  string
 	}{
 		{"Greet world", "world", "Hello, world"},
+		{"Greet world without parameter", "", "Hello, world"},
 		{"Greet Chris", "Chris", "Hello, Chris"},
 		{"Greet Brian", "Brian", "Hello, Brian"},
 	}
