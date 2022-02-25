@@ -4,14 +4,17 @@ import "testing"
 
 func TestHello(t *testing.T) {
 	tests := []struct {
-		name string
-		want string
+		name  string
+		bring string
+		want  string
 	}{
-		{"the only test", "Hello, world"},
+		{"Greet world", "world", "Hello, world"},
+		{"Greet Chris", "Chris", "Hello, Chris"},
+		{"Greet Brian", "Brian", "Hello, Brian"},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := Hello(); got != tt.want {
+			if got := Hello(tt.bring); got != tt.want {
 				t.Errorf("Hello() = %v, want %v", got, tt.want)
 			}
 		})
