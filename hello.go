@@ -1,11 +1,5 @@
 package main
 
-import "fmt"
-
-func main() {
-	fmt.Println(Hello("world", ""))
-}
-
 const englishHelloPrefix = "Hello, "
 const spanishHelloPerefix = "Hola, "
 const frenchHelloPerefix = "Bonjour, "
