@@ -2,16 +2,21 @@ package pointers
 
 import "fmt"
 
-type Wallet struct {
-	balance int
+type Bitcoin int
+
+func (b Bitcoin) String() string {
+	return fmt.Sprintf("%dBTC", b)
 }
 
-func (w *Wallet) Deposit(amount int) {
-	fmt.Printf("address of balance in test is %v\n", &w.balance)
+type Wallet struct {
+	balance Bitcoin
+}
+
+func (w *Wallet) Deposit(amount Bitcoin) {
 
 	w.balance += amount
 }
 
-func (w *Wallet) Balance() int {
+func (w *Wallet) Balance() Bitcoin {
 	return w.balance
 }
