@@ -13,11 +13,7 @@ const countdownStart = 3
 type Sleeper interface {
 	Sleep()
 }
-type DefaultSleeper struct{}
 
-func (d DefaultSleeper) Sleep() {
-	time.Sleep(1 * time.Second)
-}
 func main() {
 	sleeper := &ConfigurableSleeper{100 * time.Millisecond, time.Sleep}
 	Countdown(os.Stdout, sleeper)
