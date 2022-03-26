@@ -1,19 +1,22 @@
 package pbt
 
-import "testing"
+import (
+	"fmt"
+	"testing"
+)
 
 func TestRomanNumerals(t *testing.T) {
 	cases := []struct {
-		Description string
-		Arabic      int
-		Want        string
+		Arabic int
+		Want   string
 	}{
-		{"1 gets converted to I", 1, "I"},
-		{"2 gets converted to II", 2, "II"},
-		{"3 gets converted to III", 3, "III"},
+		{1, "I"},
+		{2, "II"},
+		{3, "III"},
 	}
 	for _, test := range cases {
-		t.Run(test.Description, func(t *testing.T) {
+		description := fmt.Sprintf("%d gets converted to %s", test.Arabic, test.Want)
+		t.Run(description, func(t *testing.T) {
 			got := ConvertToRoman(test.Arabic)
 
 			if got != test.Want {
