@@ -15,6 +15,15 @@ func TestRomanNumerals(t *testing.T) {
 		{3, "III"},
 		{4, "IV"},
 		{5, "V"},
+		{6, "VI"},
+		{7, "VII"},
+		{8, "VIII"},
+		{9, "IX"},
+		{10, "X"},
+		{14, "XIV"},
+		{18, "XVIII"},
+		{20, "XX"},
+		{39, "XXXIX"},
 	}
 	for _, test := range cases {
 		description := fmt.Sprintf("%d gets converted to %s", test.Arabic, test.Want)
