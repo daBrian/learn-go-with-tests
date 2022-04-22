@@ -3,6 +3,7 @@ package pbt
 import (
 	"fmt"
 	"testing"
+	"testing/quick"
 )
 
 var cases = []struct {
@@ -41,7 +42,6 @@ var cases = []struct {
 }
 
 func TestRomanNumerals(t *testing.T) {
-
 	for _, test := range cases {
 		description := fmt.Sprintf("%d gets converted to %s", test.Arabic, test.Roman)
 		t.Run(description, func(t *testing.T) {
@@ -62,5 +62,17 @@ func TestConvertingToArabic(t *testing.T) {
 				t.Errorf("got %d, want %d", got, test.Arabic)
 			}
 		})
+	}
+}
+
+func TestPropertiesOfConversion(t *testing.T) {
+	assertion := func(arabic int) bool {
+		roman := ConvertToRoman(arabic)
+		fromRoman := ConvertToArabic(roman)
+		return fromRoman == arabic
+	}
+
+	if err := quick.Check(assertion, nil); err != nil {
+		t.Error("failed checks", err)
 	}
 }
