@@ -5,16 +5,30 @@ import (
 )
 
 func NewPostsFromFs(fileSystem fs.FS) ([]Post, error) {
-	dir, _ := fs.ReadDir(fileSystem, ".")
+	dir, err := fs.ReadDir(fileSystem, ".")
+	if err != nil {
+		return nil, err
+	}
 	var posts []Post
 	for _, f := range dir {
-		posts = append(posts, getPost(fileSystem, f.Name()))
+		post, err := getPost(fileSystem, f.Name())
+		if err != nil {
+			return nil, err
+		}
+		posts = append(posts, post)
 	}
 	return posts, nil
 }
 
-func getPost(system fs.FS, fn string) Post {
-	postFile, _ := system.Open(fn)
-	defer postFile.Close()
-	return newPost(postFile)
+func getPost(system fs.FS, fn string) (post Post, err error) {
+	var postFile fs.File
+	postFile, err = system.Open(fn)
+	if err != nil {
+		return Post{}, err
+	}
+	defer func(postFile fs.File) {
+		err = postFile.Close()
+	}(postFile)
+	post = newPost(postFile)
+	return
 }
