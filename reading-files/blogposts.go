@@ -28,7 +28,10 @@ func getPost(system fs.FS, fn string) (post Post, err error) {
 	}
 	defer func(postFile fs.File) {
 		err = postFile.Close()
+		if err != nil {
+			post = Post{}
+		}
 	}(postFile)
-	post = newPost(postFile)
+	post, err = newPost(postFile)
 	return
 }
