@@ -1,0 +1,6 @@
+GET http://localhost:5000/players/Pepper
+Accept: application/json
+
+<> 2022-07-24T164916.200.txt
+
+###

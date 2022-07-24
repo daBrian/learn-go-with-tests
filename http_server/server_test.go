@@ -1,6 +1,7 @@
-package http_server
+package main_test
 
 import (
+	. "github.com/daBrian/learn-go-with-tests/http_server"
 	"github.com/stretchr/testify/assert"
 	"net/http"
 	"net/http/httptest"
